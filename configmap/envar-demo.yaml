@@ -1,0 +1,24 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  creationTimestamp: null
+  labels:
+    app: frontend
+    src: tony
+  name: envar-demo
+spec:
+  containers:
+  - env:
+    - name: passwd
+      value: 135Maxine
+    - name: usr
+      value: developer
+    image: gcr.io/google-samples/node-hello:1.0
+    name: envar-demo
+    envFrom:
+      - configMapRef:
+          name: app-config2  
+    resources: {}
+  dnsPolicy: ClusterFirst
+  restartPolicy: Always
+status: {}
